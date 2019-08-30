@@ -61,8 +61,8 @@ public class A1Adept {
 		}
 		double avgSpent= totalSpent/ numCustomers;
 
-		System.out.println("Biggest: "+ largestSpender + " ("+ largestAmtSpent +")");
-		System.out.println("Smallest: "+ smallestSpender + " ("+ smallestAmtSpent +")");
+		System.out.println("Biggest: "+ largestSpender + " ("+ String.format("%.2f", largestAmtSpent) +")");
+		System.out.println("Smallest: "+ smallestSpender + " ("+ String.format("%.2f",smallestAmtSpent) +")");
 		System.out.println("Average: "+ String.format("%.2f", avgSpent));
 
 	}
