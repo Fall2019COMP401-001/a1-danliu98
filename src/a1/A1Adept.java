@@ -20,8 +20,8 @@ public class A1Adept {
 		int numCustomers= scan.nextInt();
 		String[] firstName= new String[numCustomers];
 		String[] lastName= new String[numCustomers];
-		double totalSpent= 0;
 		double[] customerSpent= new double[numCustomers];
+		double totalSpent= 0;
 		
 		double largestAmtSpent=0;
 		String largestSpender= "";
@@ -42,13 +42,17 @@ public class A1Adept {
 
 				for (int m=0; m<numItems; m++) {
 					if (boughtItemName[k].equals(itemName[m])) {customerSpent[j]+= (itemQuant[k]*itemPrice[m]);}
+//					^using .equals to compare strings
 				}					
 			}
 			totalSpent+= customerSpent[j];
-//			^moved out to only added up 3times (3 customers)
+//			^moved out above loop to only added up the amount of customers there are
 			
 			largestAmtSpent= customerSpent[0];
+			largestSpender= firstName[0]+ " " +lastName[0];
 			smallestAmtSpent= customerSpent[0];
+			smallestSpender= firstName[0]+ " " +lastName[0];
+			
 			for (int n=0; n<numCustomers; n++) {
 				if (largestAmtSpent<customerSpent[n]) {
 					largestAmtSpent= customerSpent[n];
@@ -64,7 +68,6 @@ public class A1Adept {
 		System.out.println("Biggest: "+ largestSpender + " ("+ String.format("%.2f", largestAmtSpent) +")");
 		System.out.println("Smallest: "+ smallestSpender + " ("+ String.format("%.2f",smallestAmtSpent) +")");
 		System.out.println("Average: "+ String.format("%.2f", avgSpent));
-
 	}
 }
 
