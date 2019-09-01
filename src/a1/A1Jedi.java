@@ -12,7 +12,6 @@ public class A1Jedi {
 		String[] itemName= new String[numItems];
 		double[] itemPrice= new double[numItems];
 		
-
 		for (int i=0; i<numItems; i++) {
 			itemName[i]= scan.next();
 			itemPrice[i]= scan.nextDouble();
@@ -23,10 +22,14 @@ public class A1Jedi {
 		String[] lastName= new String[numCustomers];
 
 		int[] totalEachItemBought= new int[numItems];
-// assign zero to each array slot?..		for ()
+//      assign zero to each array slot?..		for ()
 		int[] totalCustomerEachItemBought= new int[numItems];
+		boolean[] noDoubleCount= new boolean[numItems];
 		
 		for (int j=0; j<numCustomers; j++) {
+			
+			for (int i=0; i<numItems; i++) {noDoubleCount[i]=false;}
+			
 			firstName[j]= scan.next();
 			lastName[j]= scan.next();
 
@@ -39,14 +42,16 @@ public class A1Jedi {
 				boughtItemName[k]= scan.next();
 
 				for (int m=0; m<numItems; m++) {
-					if (boughtItemName[k].equals(itemName[m])) {totalEachItemBought[m]+= itemQuant[k]; totalCustomerEachItemBought[m]++;}
+					if (boughtItemName[k].equals(itemName[m])) {totalEachItemBought[m]+= itemQuant[k];}
+					if (boughtItemName[k].equals(itemName[m]) && noDoubleCount[m]==false) {totalCustomerEachItemBought[m]++; noDoubleCount[m]=true;}
 //					^using .equals to compare strings
-					}					
-				}
+					}				
+				}	
 			}
-		for (int n=0; n<numItems; n++) {
-			if (totalEachItemBought[n]==0) {System.out.println("No customers bought "+ itemName[n]);}
-			else {System.out.println(totalCustomerEachItemBought[n]+ " customers bought "+ totalEachItemBought[n]+ " "+ itemName[n]);}
+		
+		for (int m=0; m<numItems; m++) {
+			if (totalEachItemBought[m]==0) {System.out.println("No customers bought "+ itemName[m]);}
+			else {System.out.println(totalCustomerEachItemBought[m]+ " customers bought "+ totalEachItemBought[m]+ " "+ itemName[m]);}
 		}
 		
 	}
